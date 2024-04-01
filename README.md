@@ -1,6 +1,10 @@
 # Webcritic: Roast Your Website
 
+<<<<<<< HEAD
 Using [Claude3](https://claude.ai) vision to roast your website. See it in action [here](https://webcritic.reflex.run).
+=======
+Using [Claude3](https://claude.ai) vision to roast your website.
+>>>>>>> a298d95 (Initial commit)
 
 ![Webcritic](webcritic.png)
 

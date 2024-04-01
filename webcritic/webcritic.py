@@ -75,10 +75,12 @@ class State(rx.State):
         finally:
             self.processing = False
 
+    def start_upload(self):
+        self.processing = True
+
     async def generate_code(self, files: list[rx.UploadFile]):
         image = await files[0].read()
         self.image = PIL.Image.open(io.BytesIO(image))
-        self.processing = True
         yield State.run_model
 
 def logo():
@@ -134,7 +136,7 @@ def index() -> rx.Component:
                     rx.chakra.circular_progress(is_indeterminate=True),
                     rx.button(
                         "Critique",
-                        on_click=[State.generate_code(rx.upload_files(upload_id="upload"))],
+                        on_click=[State.start_upload, State.generate_code(rx.upload_files(upload_id="upload"))],
                         size="4",
                     ),
                 ),
